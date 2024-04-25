@@ -10,7 +10,7 @@ spec:
   - git:
       repoURL: https://github.com/graytonio/flagops-demo.git
       revision: HEAD
-      directories:
+      files:
       - path: applications/production/**/values.yaml
   template:
     metadata:
