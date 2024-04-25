@@ -1,0 +1,7 @@
+cloud: aws
+cluster: prod-use1
+team: frontend
+internal: false
+
+replicas: [{ env "nginx_relicas" }]
+  

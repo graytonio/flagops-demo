@@ -1,0 +1,7 @@
+cloud: aws
+cluster: prod-euc1
+team: eu-dev
+internal: false
+
+replicas: [{ env "nginx_relicas" }]
+  

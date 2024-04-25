@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/graytonio/flagops-demo.git
+      revision: HEAD
+      directories:
+      - path: applications/production/**/values.yaml
+  template:
+    metadata:
+      name: '{{.path.basename}}'
+    spec:
+      project: '{{.project}}'
+      source:
+        repoURL: https://github.com/graytonio/flagops-demo.git
+        targetRevision: HEAD
+        path: '{{.path.path}}'
+        plugin:
+          name: flagops-plugin-helm
+          env:
+            - name: FLAGOPS_ENVIRONMENT
+              value: production
+            - name: FLAGOPS_PROP_CLOUD
+              value: '{{ .cloud }}'
+            - name: FLAGOPS_PROP_CLUSTER
+              value: '{{ .cluster }}'
+            - name: FLAGOPS_PROP_TEAM
+              value: '{{ .team }}'
+            - name: FLAGOPS_PROP_INTERNAL
+              value: '{{ .internal }}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.path.basename}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
