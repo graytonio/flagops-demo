@@ -14,9 +14,9 @@ spec:
       - path: applications/production/**/values.yaml
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: '{{ .name }}-{{.cluster.name}}-prod'
     spec:
-      project: '{{.project}}'
+      project: 'default'
       source:
         repoURL: https://github.com/graytonio/flagops-demo.git
         targetRevision: HEAD
