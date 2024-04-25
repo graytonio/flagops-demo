@@ -14,7 +14,7 @@ spec:
       - path: applications/production/**/values.yaml
   template:
     metadata:
-      name: '{{ .name }}-{{.cluster.name}}-prod'
+      name: '{{.name}}-{{.cluster}}-prod'
     spec:
       project: 'default'
       source:
