@@ -1,3 +1,4 @@
+name: nginx
 cloud: aws
 cluster: prod-euc1
 team: eu-dev

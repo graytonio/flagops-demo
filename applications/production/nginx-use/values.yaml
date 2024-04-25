@@ -1,3 +1,4 @@
+name: nginx
 cloud: aws
 cluster: prod-use1
 team: frontend

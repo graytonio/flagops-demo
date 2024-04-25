@@ -1,3 +1,4 @@
+name: nginx
 cloud: gcp
 cluster: prod-usw2
 team: platform
