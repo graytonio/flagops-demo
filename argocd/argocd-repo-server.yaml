@@ -74,7 +74,7 @@ spec:
             mountPath: /scripts/generate.sh
           - name: flagops-env
             subPath: flagops-env.yaml
-            mountPath: /flagops/.flagops.yaml
+            mountPath: /config/.flagops.yaml
 
       # flagops with Kustomize
       - name: flagops-kustomize
@@ -106,7 +106,7 @@ spec:
             mountPath: /scripts/generate.sh
           - name: flagops-env
             subPath: flagops-env.yaml
-            mountPath: /flagops/.flagops.yaml
+            mountPath: /config/.flagops.yaml
 
       # flagops with plain YAML
       - name: flagops
@@ -138,4 +138,4 @@ spec:
             mountPath: /scripts/generate.sh
           - name: flagops-env
             subPath: flagops-env.yaml
-            mountPath: /flagops/.flagops.yaml
+            mountPath: /config/.flagops.yaml
